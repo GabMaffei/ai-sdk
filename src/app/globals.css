@@ -1,0 +1,5 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: Lacks tailwind support */
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@plugin "tailwind-scrollbar";
