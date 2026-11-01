@@ -69,3 +69,19 @@ flowchart LR
 ## Project context
 
 A practical prototype developed during my postgraduate studies, focused on streaming responses, model-invoked tools, and rendering structured tool output in a chat interface. It uses the Vercel AI SDK rather than implementing a separate SDK.
+
+## Source guide
+
+| Source | What to inspect |
+| --- | --- |
+| [Chat endpoint](src/app/api/ai/route.ts) | Model selection, streaming, tools, and the five-step stopping condition. |
+| [GitHub profile tool](src/ai/tools/github-profile.ts) | Input schema and Octokit profile lookup. |
+| [HTTP tool](src/ai/tools/http-fetch.ts) | URL input schema and server-side JSON retrieval. |
+| [Conversation UI](src/components/chat.tsx) | Message rendering and handling of tool output. |
+| [Profile card](src/components/github-profile.tsx) | Presentation of selected GitHub profile fields. |
+
+## Example review flow
+
+With your own provider credentials configured, a prompt such as “Show the public GitHub profile for octocat” exercises the profile tool and its result card. The model decides whether to invoke a tool; tool definitions and server execution determine what that invocation can do.
+
+Zod validates the structure of tool inputs. It does not verify the truth of model-generated statements or validate all external response content. This prototype uses AI SDK tool calling directly; it does not expose an MCP server or implement retrieval-augmented generation.
